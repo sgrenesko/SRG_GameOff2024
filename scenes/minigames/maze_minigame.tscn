@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://c16musrg5dw30"]
+
+[ext_resource type="Texture2D" uid="uid://bix561uxsmgtk" path="res://assets/maze_tiles.png" id="1_3lf0n"]
+[ext_resource type="Script" path="res://scenes/minigames/maze_minigame.gd" id="1_npyvp"]
+[ext_resource type="Script" path="res://scenes/tile_map.gd" id="2_hm26x"]
+[ext_resource type="Script" path="res://scenes/goal.gd" id="3_27kka"]
+[ext_resource type="Script" path="res://scenes/maze_cursor.gd" id="4_lurna"]
+[ext_resource type="Texture2D" uid="uid://x1l6googxjm5" path="res://assets/maze_player.png" id="5_8u8id"]
+[ext_resource type="Texture2D" uid="uid://b8ja8l264tibx" path="res://assets/game_title_maze.png" id="6_43ah3"]
+[ext_resource type="PackedScene" uid="uid://cubccaxcflyps" path="res://scenes/pc_transition.tscn" id="7_uyhwn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fwbl"]
+texture = ExtResource("1_3lf0n")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tt2pb"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2fwbl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqafk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpgkt"]
+atlas = ExtResource("5_8u8id")
+region = Rect2(0, 0, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yet4"]
+atlas = ExtResource("5_8u8id")
+region = Rect2(5, 0, 5, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tq8oc"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": SubResource("AtlasTexture_dpgkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yet4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21ikn"]
+size = Vector2(16, 16)
+
+[node name="maze_minigame" type="Node2D"]
+script = ExtResource("1_npyvp")
+
+[node name="PC_frame" type="ColorRect" parent="."]
+offset_right = 512.0
+offset_bottom = 288.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="PC_Screen" type="ColorRect" parent="PC_frame"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 496.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(22, 26)
+tile_set = SubResource("TileSet_tt2pb")
+format = 2
+script = ExtResource("2_hm26x")
+maze_width = 15
+maze_height = 15
+
+[node name="Goal" type="ColorRect" parent="."]
+offset_left = 22.0
+offset_top = 26.0
+offset_right = 22.0
+offset_bottom = 26.0
+script = ExtResource("3_27kka")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Goal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Area2D"]
+shape = SubResource("RectangleShape2D_wqafk")
+debug_color = Color(0.428, 0.502, 0.875, 0.773)
+
+[node name="maze_cursor" type="CharacterBody2D" parent="."]
+position = Vector2(22, 26)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("4_lurna")
+
+[node name="mazeplayer" type="AnimatedSprite2D" parent="maze_cursor"]
+position = Vector2(0, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tq8oc")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maze_cursor"]
+shape = SubResource("RectangleShape2D_21ikn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 2)
+anchor_mode = 0
+zoom = Vector2(2.25, 2.25)
+
+[node name="maze_title" type="Sprite2D" parent="."]
+position = Vector2(382, 144)
+scale = Vector2(0.391978, 0.391978)
+texture = ExtResource("6_43ah3")
+
+[node name="pc_transition" parent="." instance=ExtResource("7_uyhwn")]
+position = Vector2(-1, 0)
+scale = Vector2(0.45, 0.45)

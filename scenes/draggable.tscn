@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://co7gjchbmgf7r"]
+
+[ext_resource type="Script" path="res://draggable.gd" id="2_0pnqs"]
+
+[node name="Draggable" type="Sprite2D"]
+position = Vector2(539, 281)
+scale = Vector2(3.59375, 3.59375)
+script = ExtResource("2_0pnqs")

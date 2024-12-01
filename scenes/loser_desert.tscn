@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://kvtenpupprly"]
+
+[ext_resource type="Texture2D" uid="uid://dh27rjwev8gsf" path="res://assets/desert.png" id="1_3xcps"]
+[ext_resource type="Script" path="res://scenes/loser_desert.gd" id="1_6qwok"]
+[ext_resource type="PackedScene" uid="uid://ddmp5hdylcc3v" path="res://scenes/player.tscn" id="2_74d52"]
+[ext_resource type="Texture2D" uid="uid://dythpf6fevwfs" path="res://assets/Loss.png" id="3_s7tqp"]
+[ext_resource type="PackedScene" uid="uid://chkata8idwjmg" path="res://scenes/scene_fade.tscn" id="4_j84fa"]
+[ext_resource type="Script" path="res://scenes/scene_fade.gd" id="5_n6ruj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sk6m1"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3mykx"]
+b = Vector2(0, 62)
+
+[node name="loser_desert" type="Node2D"]
+script = ExtResource("1_6qwok")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -59.0
+offset_top = -80.0
+offset_right = 362.0
+offset_bottom = 124.0
+color = Color(0, 0, 0, 1)
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(160, 27)
+scale = Vector2(3.60417, 3.60417)
+texture = ExtResource("1_3xcps")
+
+[node name="maincharacter" parent="." instance=ExtResource("2_74d52")]
+position = Vector2(73, 45)
+
+[node name="Camera2D" type="Camera2D" parent="maincharacter"]
+position = Vector2(-1, -15)
+zoom = Vector2(8, 8)
+limit_left = 0
+limit_top = -10
+limit_right = 260
+
+[node name="lol" type="Sprite2D" parent="maincharacter/Camera2D"]
+position = Vector2(0, -16)
+scale = Vector2(0.186747, 0.186747)
+texture = ExtResource("3_s7tqp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(119, 53)
+shape = SubResource("WorldBoundaryShape2D_sk6m1")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_3mykx")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(260, -3)
+shape = SubResource("SegmentShape2D_3mykx")
+
+[node name="sceneFade" parent="." instance=ExtResource("4_j84fa")]
+offset_left = -35.0
+offset_top = -43.0
+offset_right = 345.0
+offset_bottom = 161.0
+script = ExtResource("5_n6ruj")

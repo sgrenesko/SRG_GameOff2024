@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://c16musrg5dw30"]
+
+[ext_resource type="Texture2D" uid="uid://bix561uxsmgtk" path="res://assets/maze_tiles.png" id="2_4ptrp"]
+[ext_resource type="Script" path="res://scenes/tile_map.gd" id="2_l1do2"]
+[ext_resource type="Texture2D" uid="uid://x1l6googxjm5" path="res://assets/maze_player.png" id="3_db5rq"]
+[ext_resource type="Script" path="res://scenes/maze_cursor.gd" id="3_grpcs"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fwbl"]
+texture = ExtResource("2_4ptrp")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tt2pb"]
+sources/0 = SubResource("TileSetAtlasSource_2fwbl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpgkt"]
+atlas = ExtResource("3_db5rq")
+region = Rect2(0, 0, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yet4"]
+atlas = ExtResource("3_db5rq")
+region = Rect2(5, 0, 5, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tq8oc"]
+animations = [{
+"frames": [{
+"duration": 4.5,
+"texture": SubResource("AtlasTexture_dpgkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yet4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21ikn"]
+size = Vector2(5, 5)
+
+[node name="rewire_minigame" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_tt2pb")
+format = 2
+script = ExtResource("2_l1do2")
+
+[node name="Goal" type="ColorRect" parent="."]
+
+[node name="maze_cursor" type="CharacterBody2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("3_grpcs")
+
+[node name="mazeplayer" type="AnimatedSprite2D" parent="maze_cursor"]
+position = Vector2(0, 0.5)
+sprite_frames = SubResource("SpriteFrames_tq8oc")
+autoplay = "default"
+frame_progress = 0.307191
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="maze_cursor"]
+shape = SubResource("RectangleShape2D_21ikn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2, 2)

@@ -1,0 +1,216 @@
+[gd_scene load_steps=17 format=3 uid="uid://b3iujbi3hd21b"]
+
+[ext_resource type="PackedScene" uid="uid://co7gjchbmgf7r" path="res://scenes/draggable.tscn" id="1_svc6b"]
+[ext_resource type="Texture2D" uid="uid://yrj0ek1j71ku" path="res://assets/lockpick.png" id="2_dl8bp"]
+[ext_resource type="Texture2D" uid="uid://cdj7470lueu1k" path="res://assets/up_button.png" id="3_cs7vk"]
+[ext_resource type="Texture2D" uid="uid://dssft7oeau682" path="res://assets/up_button_press.png" id="4_3erpb"]
+[ext_resource type="Script" path="res://scenes/num_1.gd" id="4_lijmj"]
+[ext_resource type="Texture2D" uid="uid://b68ym01t0hi58" path="res://assets/down_button.png" id="5_xldps"]
+[ext_resource type="Texture2D" uid="uid://dxdcdvb4ve4nw" path="res://assets/down_button_press.png" id="6_rgksn"]
+[ext_resource type="Texture2D" uid="uid://e2x2ne0o10bg" path="res://assets/code_numbers.png" id="7_am1ns"]
+[ext_resource type="Texture2D" uid="uid://v0vj40kd6yx4" path="res://assets/game_title_passwords.png" id="9_jdv4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvbt0"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_but75"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4rne"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is126"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaqnv"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts70q"]
+atlas = ExtResource("7_am1ns")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uea6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_but75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4rne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is126")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaqnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts70q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="codeReveal" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 659.0
+color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 41.0
+offset_top = 41.0
+offset_right = 1121.0
+offset_bottom = 609.0
+color = Color(0, 0, 0, 1)
+
+[node name="Draggable" parent="." instance=ExtResource("1_svc6b")]
+position = Vector2(968, 832)
+scale = Vector2(16, 16)
+texture = ExtResource("2_dl8bp")
+
+[node name="Area2D" type="Area2D" parent="Draggable"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Draggable/Area2D"]
+position = Vector2(-0.5, 0.125)
+polygon = PackedVector2Array(12.75, -7.5625, 13.5625, -6.8125, 13.6875, -1.6875, 14.5625, -1.5, 15.5625, -0.5, 15.5, 0.3125, 14.5625, 1.5, -9.875, 1.625, -11.3125, 3.125, -13.8125, 3.3125, -14.625, 1.5, -15.5625, 0.0625, -15.375, -0.8125, -14.5, -1.875, -14.4375, -2.875, -13.4375, -3.5625, -11.4375, -3.5625, -10.5625, -2.375, -9.8125, -1.5625, 7.625, -1.4375, 11.0625, -1.4375, 11.6875, -1.5625, 11.6875, -6.625)
+
+[node name="num1" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_lijmj")
+
+[node name="up" type="TextureButton" parent="num1"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("3_cs7vk")
+texture_pressed = ExtResource("4_3erpb")
+
+[node name="down" type="TextureButton" parent="num1"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("5_xldps")
+texture_pressed = ExtResource("6_rgksn")
+
+[node name="Highlight" type="ColorRect" parent="num1"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 11.0
+
+[node name="num2" type="AnimatedSprite2D" parent="."]
+position = Vector2(430, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_lijmj")
+
+[node name="up" type="TextureButton" parent="num2"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("3_cs7vk")
+texture_pressed = ExtResource("4_3erpb")
+
+[node name="down" type="TextureButton" parent="num2"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("5_xldps")
+texture_pressed = ExtResource("6_rgksn")
+
+[node name="Highlight2" type="ColorRect" parent="num2"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.16666
+offset_top = -11.1667
+offset_right = 6.83334
+offset_bottom = 10.8333
+
+[node name="num3" type="AnimatedSprite2D" parent="."]
+position = Vector2(580, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_lijmj")
+
+[node name="up" type="TextureButton" parent="num3"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("3_cs7vk")
+texture_pressed = ExtResource("4_3erpb")
+
+[node name="down" type="TextureButton" parent="num3"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("5_xldps")
+texture_pressed = ExtResource("6_rgksn")
+
+[node name="num4" type="AnimatedSprite2D" parent="."]
+position = Vector2(730, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_lijmj")
+
+[node name="up" type="TextureButton" parent="num4"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("3_cs7vk")
+texture_pressed = ExtResource("4_3erpb")
+
+[node name="down" type="TextureButton" parent="num4"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("5_xldps")
+texture_pressed = ExtResource("6_rgksn")
+
+[node name="num5" type="AnimatedSprite2D" parent="."]
+position = Vector2(880, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_lijmj")
+
+[node name="up" type="TextureButton" parent="num5"]
+offset_left = -8.31129
+offset_top = -19.3911
+offset_right = 7.68871
+offset_bottom = -11.3911
+texture_normal = ExtResource("3_cs7vk")
+texture_pressed = ExtResource("4_3erpb")
+
+[node name="down" type="TextureButton" parent="num5"]
+offset_left = -7.5642
+offset_top = 11.3398
+offset_right = 8.4358
+offset_bottom = 19.3398
+texture_normal = ExtResource("5_xldps")
+texture_pressed = ExtResource("6_rgksn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(580, 185)
+texture = ExtResource("9_jdv4x")

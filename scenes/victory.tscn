@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0oohco5ukkv"]
+
+[ext_resource type="Script" path="res://scenes/victory.gd" id="1_3b0bw"]
+[ext_resource type="PackedScene" uid="uid://ii0xvfpi4maf" path="res://scenes/city_backdrop.tscn" id="1_a824v"]
+[ext_resource type="Texture2D" uid="uid://dxcnrug0wwlbu" path="res://assets/win.png" id="2_fhykp"]
+[ext_resource type="Texture2D" uid="uid://btois34qr6sh4" path="res://assets/credits.png" id="4_xarip"]
+
+[node name="Victory" type="Node2D"]
+script = ExtResource("1_3b0bw")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_a824v")]
+position = Vector2(176.154, 107)
+scale = Vector2(0.847976, 0.895522)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(175, 98)
+zoom = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(175, 39)
+scale = Vector2(0.198276, 0.198276)
+texture = ExtResource("2_fhykp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(175, 120)
+scale = Vector2(0.189042, 0.189042)
+texture = ExtResource("4_xarip")

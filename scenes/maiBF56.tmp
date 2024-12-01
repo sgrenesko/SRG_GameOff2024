@@ -1,0 +1,144 @@
+[gd_scene load_steps=16 format=3 uid="uid://h05un6hd4747"]
+
+[ext_resource type="Texture2D" uid="uid://c02xrvx4avagm" path="res://assets/tiles2.png" id="1_llqfq"]
+[ext_resource type="PackedScene" uid="uid://ddmp5hdylcc3v" path="res://scenes/player.tscn" id="2_hw5uv"]
+[ext_resource type="Texture2D" uid="uid://7l540l5ecuqq" path="res://assets/elevator.png" id="3_2r1bp"]
+[ext_resource type="Texture2D" uid="uid://d0bym38exeuhi" path="res://assets/pixel_pi_sprite_ref2.png" id="3_sjwqf"]
+[ext_resource type="Script" path="res://scenes/desk_detector.gd" id="4_81lqg"]
+[ext_resource type="Texture2D" uid="uid://dc3novmaldoo5" path="res://assets/front_desk.png" id="4_pqndn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2m8h1"]
+texture = ExtResource("1_llqfq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hapmc"]
+sources/1 = SubResource("TileSetAtlasSource_2m8h1")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tba3x"]
+atlas = ExtResource("3_sjwqf")
+region = Rect2(66, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebn1u"]
+atlas = ExtResource("3_sjwqf")
+region = Rect2(44, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl3m6"]
+atlas = ExtResource("3_sjwqf")
+region = Rect2(22, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ras25"]
+atlas = ExtResource("3_sjwqf")
+region = Rect2(0, 0, 22, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2dty"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_tba3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebn1u")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_tba3x")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ebn1u")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_tba3x")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_wl3m6")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_ras25")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_wl3m6")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk4ei"]
+size = Vector2(34, 34)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fieyd"]
+
+[node name="main_workroom" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -43.0
+offset_top = -98.0
+offset_right = 396.0
+offset_bottom = 187.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -256)
+tile_set = SubResource("TileSet_hapmc")
+format = 2
+layer_0/tile_data = PackedInt32Array(1310720, 1, 0, 1310721, 1, 0, 1310722, 1, 0, 1310723, 1, 0, 1310724, 1, 0, 1310725, 1, 0, 1310726, 1, 0, 1310727, 1, 0, 1310728, 1, 0, 1310729, 1, 0, 1310730, 1, 0, 1310731, 1, 0, 1310732, 1, 0, 1310733, 1, 0, 1310734, 1, 0, 1310735, 1, 0, 1310736, 1, 0, 1310737, 1, 0, 1310738, 1, 0, 1310739, 1, 0, 1310740, 1, 0, 1310741, 1, 0, 1310742, 1, 0, 1245184, 65537, 0, 1179648, 65537, 0, 1114112, 65537, 0, 1048576, 131073, 0, 1048577, 131073, 0, 1114113, 65537, 0, 1179649, 65537, 0, 1245185, 65537, 0, 1048578, 131073, 0, 1114114, 65537, 0, 1179650, 327681, 0, 1245186, 65537, 0, 1048579, 262145, 0, 1114115, 65537, 0, 1179651, 65537, 0, 1245187, 65537, 0, 1048580, 131073, 0, 1114116, 65537, 0, 1179652, 65537, 0, 1245188, 65537, 0, 1048581, 131073, 0, 1114117, 65537, 0, 1179653, 327681, 0, 1245189, 65537, 0, 1048582, 131073, 0, 1114118, 65537, 0, 1179654, 65537, 0, 1245190, 65537, 0, 1048583, 262145, 0, 1114119, 65537, 0, 1179655, 65537, 0, 1245191, 65537, 0, 1048584, 131073, 0, 1114120, 65537, 0, 1179656, 327681, 0, 1245192, 65537, 0, 1048585, 131073, 0, 1114121, 65537, 0, 1179657, 65537, 0, 1245193, 65537, 0, 1048586, 131073, 0, 1114122, 65537, 0, 1179658, 65537, 0, 1245194, 65537, 0, 1048587, 131073, 0, 1114123, 65537, 0, 1179659, 327681, 0, 1245195, 65537, 0, 1048588, 262145, 0, 1114124, 65537, 0, 1179660, 65537, 0, 1245196, 65537, 0, 1048589, 131073, 0, 1114125, 65537, 0, 1179661, 65537, 0, 1245197, 65537, 0, 1048590, 131073, 0, 1114126, 65537, 0, 1179662, 327681, 0, 1245198, 65537, 0, 1048591, 262145, 0, 1114127, 65537, 0, 1179663, 65537, 0, 1245199, 65537, 0, 1048592, 131073, 0, 1114128, 65537, 0, 1179664, 65537, 0, 1245200, 65537, 0, 1048593, 131073, 0, 1114129, 65537, 0, 1179665, 327681, 0, 1245201, 65537, 0, 1048594, 131073, 0, 1114130, 65537, 0, 1179666, 65537, 0, 1245202, 65537, 0, 1048595, 262145, 0, 1114131, 65537, 0, 1179667, 65537, 0, 1245203, 65537, 0, 1048596, 131073, 0, 1114132, 65537, 0, 1179668, 327681, 0, 1245204, 65537, 0, 1048597, 131073, 0, 1114133, 65537, 0, 1179669, 65537, 0, 1245205, 65537, 0, 1048598, 262145, 0, 1114134, 65537, 805306368, 1179670, 65537, 805306368, 1245206, 65537, 805306368)
+
+[node name="elevator" type="Sprite2D" parent="."]
+position = Vector2(23, 48)
+texture = ExtResource("3_2r1bp")
+
+[node name="IdlePlayer" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(259, 57)
+sprite_frames = SubResource("SpriteFrames_h2dty")
+animation = &"new_animation"
+frame_progress = 0.279935
+
+[node name="player_desk" type="Sprite2D" parent="."]
+position = Vector2(253, 58)
+texture = ExtResource("4_pqndn")
+
+[node name="desk_detector" type="Area2D" parent="player_desk"]
+script = ExtResource("4_81lqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_desk/desk_detector"]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_yk4ei")
+
+[node name="random_desk" type="Sprite2D" parent="."]
+position = Vector2(84, 58)
+texture = ExtResource("4_pqndn")
+
+[node name="random_desk2" type="Sprite2D" parent="."]
+position = Vector2(138, 58)
+texture = ExtResource("4_pqndn")
+
+[node name="random_desk3" type="Sprite2D" parent="."]
+position = Vector2(192, 58)
+texture = ExtResource("4_pqndn")
+
+[node name="random_desk4" type="Sprite2D" parent="."]
+position = Vector2(319, 58)
+texture = ExtResource("4_pqndn")
+
+[node name="maincharacter" parent="." instance=ExtResource("2_hw5uv")]
+position = Vector2(23, 64)
+
+[node name="Camera2D" type="Camera2D" parent="maincharacter"]
+position = Vector2(1, -24)
+zoom = Vector2(8, 8)
+limit_left = -15
+limit_right = 375
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(180, 72)
+shape = SubResource("WorldBoundaryShape2D_fieyd")
+
+[connection signal="body_entered" from="player_desk/desk_detector" to="player_desk/desk_detector" method="_on_body_entered"]
+[connection signal="body_exited" from="player_desk/desk_detector" to="player_desk/desk_detector" method="_on_body_exited"]

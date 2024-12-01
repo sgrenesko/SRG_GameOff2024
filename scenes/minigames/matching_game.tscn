@@ -1,0 +1,156 @@
+[gd_scene load_steps=24 format=3 uid="uid://drbbt2ehal1hj"]
+
+[ext_resource type="Script" path="res://scenes/minigames/matching_game.gd" id="1_3ixnf"]
+[ext_resource type="Script" path="res://scenes/minigames/matching_game_timer.gd" id="1_exqrf"]
+[ext_resource type="Texture2D" uid="uid://58hxi4814tn7" path="res://assets/game_match_title.png" id="1_yydqh"]
+[ext_resource type="Texture2D" uid="uid://bl2gpf256ms5f" path="res://assets/match_nums/a.png" id="2_388jd"]
+[ext_resource type="Texture2D" uid="uid://cm3usy8yqu5qp" path="res://assets/match_nums/b.png" id="3_labkj"]
+[ext_resource type="Texture2D" uid="uid://d0vv3dt7akq0t" path="res://assets/match_nums/c.png" id="4_fwuta"]
+[ext_resource type="Texture2D" uid="uid://b54m63on8s07k" path="res://assets/match_nums/d.png" id="5_kxhtb"]
+[ext_resource type="Texture2D" uid="uid://blkm027qrp6k2" path="res://assets/match_nums/e.png" id="6_5528d"]
+[ext_resource type="Texture2D" uid="uid://30vgoxnmrdm4" path="res://assets/match_nums/f.png" id="7_vt86h"]
+[ext_resource type="Texture2D" uid="uid://b1joym2ary1ol" path="res://assets/match_nums/num1.png" id="9_pl8hk"]
+[ext_resource type="Texture2D" uid="uid://ciydu00lo3xxb" path="res://assets/match_nums/num2.png" id="10_axwdv"]
+[ext_resource type="Texture2D" uid="uid://ckud3qk2ul0ma" path="res://assets/match_nums/num3.png" id="11_ppcaw"]
+[ext_resource type="Texture2D" uid="uid://rhs6qslx3df8" path="res://assets/match_nums/num4.png" id="12_lcfff"]
+[ext_resource type="Texture2D" uid="uid://bwu1qwr0xra8p" path="res://assets/match_nums/num5.png" id="13_rdbbg"]
+[ext_resource type="Texture2D" uid="uid://bn54uuiss0hw3" path="res://assets/match_nums/num6.png" id="14_x5go0"]
+[ext_resource type="PackedScene" uid="uid://cubccaxcflyps" path="res://scenes/pc_transition.tscn" id="15_doulj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtehl"]
+atlas = ExtResource("2_388jd")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0aav"]
+atlas = ExtResource("3_labkj")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5an3b"]
+atlas = ExtResource("4_fwuta")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrafj"]
+atlas = ExtResource("5_kxhtb")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwnop"]
+atlas = ExtResource("6_5528d")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqw6d"]
+atlas = ExtResource("7_vt86h")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbudi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtehl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0aav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5an3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrafj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwnop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqw6d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="matching_game" type="Node2D"]
+script = ExtResource("1_exqrf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("1_3ixnf")
+
+[node name="computer" type="ColorRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 659.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="ColorRect" type="ColorRect" parent="computer"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 41.0
+offset_right = 1121.0
+offset_bottom = 609.0
+color = Color(0, 0, 0, 1)
+
+[node name="match_title" type="Sprite2D" parent="."]
+position = Vector2(569, 129)
+scale = Vector2(0.714286, 0.714286)
+texture = ExtResource("1_yydqh")
+
+[node name="letter1" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(168, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="letter2" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(328, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="letter3" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(488, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="letter4" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(648, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="letter5" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(808, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="letter6" type="AnimatedSprite2D" parent="." groups=["animated_sprites"]]
+position = Vector2(968, 255)
+scale = Vector2(2.07576, 2.07576)
+sprite_frames = SubResource("SpriteFrames_gbudi")
+
+[node name="num1" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(168, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("9_pl8hk")
+
+[node name="num2" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(328, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("10_axwdv")
+
+[node name="num3" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(488, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("11_ppcaw")
+
+[node name="num4" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(648, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("12_lcfff")
+
+[node name="num5" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(808, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("13_rdbbg")
+
+[node name="num6" type="Sprite2D" parent="." groups=["target_sprites"]]
+position = Vector2(968, 504)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("14_x5go0")
+
+[node name="pc_transition" parent="." instance=ExtResource("15_doulj")]

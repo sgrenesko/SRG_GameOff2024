@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c08qte0yumi84"]
+
+[ext_resource type="Texture2D" uid="uid://q14ara20oi7q" path="res://assets/IntroScreen.png" id="1_hv2ff"]
+[ext_resource type="Script" path="res://scenes/instructions.gd" id="1_xxstq"]
+[ext_resource type="Texture2D" uid="uid://ddc02t3jhk6c1" path="res://assets/startFile.png" id="2_2cmgv"]
+[ext_resource type="Texture2D" uid="uid://dao4ve14waqjy" path="res://assets/startFileOnClick.png" id="3_anm26"]
+[ext_resource type="Texture2D" uid="uid://d2xnxrh22j43w" path="res://assets/startFileHover.png" id="4_od03m"]
+
+[node name="Instructions" type="Node2D"]
+script = ExtResource("1_xxstq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -468.0
+offset_top = -34.0
+offset_right = 1196.0
+offset_bottom = 966.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(329, 393)
+scale = Vector2(1.0521, 1.0521)
+texture = ExtResource("1_hv2ff")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(12.3648, 30.9121)
+zoom = Vector2(0.75, 0.75)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 260.0
+offset_top = 714.0
+offset_right = 390.0
+offset_bottom = 844.0
+texture_normal = ExtResource("2_2cmgv")
+texture_pressed = ExtResource("3_anm26")
+texture_hover = ExtResource("4_od03m")
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

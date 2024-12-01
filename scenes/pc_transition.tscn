@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://cubccaxcflyps"]
+
+[ext_resource type="Texture2D" uid="uid://rpsoercqvdvp" path="res://assets/pixil-frame-0 (49).png" id="1_jxbm0"]
+[ext_resource type="Script" path="res://scenes/pc_transition.gd" id="1_uxfte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g1yx"]
+atlas = ExtResource("1_jxbm0")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpnyt"]
+atlas = ExtResource("1_jxbm0")
+region = Rect2(36, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd1pe"]
+atlas = ExtResource("1_jxbm0")
+region = Rect2(72, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tgh2"]
+atlas = ExtResource("1_jxbm0")
+region = Rect2(108, 0, 36, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgt7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g1yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpnyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd1pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tgh2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="pc_transition" type="Node2D"]
+script = ExtResource("1_uxfte")
+
+[node name="pc_screen" type="ColorRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 659.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="ColorRect" type="ColorRect" parent="pc_screen"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 41.0
+offset_right = 1121.0
+offset_bottom = 609.0
+color = Color(0, 0, 0, 1)
+
+[node name="static" type="AnimatedSprite2D" parent="."]
+position = Vector2(581, 325.5)
+scale = Vector2(29.8181, 17.5312)
+sprite_frames = SubResource("SpriteFrames_tgt7h")
+autoplay = "default"
+frame_progress = 0.521859

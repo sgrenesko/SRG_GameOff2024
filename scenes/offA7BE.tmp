@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://btr2oe0cti18e"]
+
+[ext_resource type="PackedScene" uid="uid://ii0xvfpi4maf" path="res://scenes/city_backdrop.tscn" id="1_lmx61"]
+[ext_resource type="Texture2D" uid="uid://bluracs60gokm" path="res://assets/tiles1.png" id="2_1m2vj"]
+[ext_resource type="PackedScene" uid="uid://ddmp5hdylcc3v" path="res://scenes/player.tscn" id="3_rmh55"]
+[ext_resource type="Script" path="res://scenes/door_collision.gd" id="4_lvjm5"]
+[ext_resource type="PackedScene" uid="uid://chkata8idwjmg" path="res://scenes/scene_fade.tscn" id="5_e7q1g"]
+[ext_resource type="PackedScene" uid="uid://4ht8f2pmearf" path="res://scenes/office_inside.tscn" id="5_gdji3"]
+[ext_resource type="PackedScene" uid="uid://bcc2e7fvmw1vg" path="res://scenes/interact_icon.tscn" id="7_263jw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w50rd"]
+texture = ExtResource("2_1m2vj")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n1byk"]
+physics_layer_0/collision_layer = 1
+sources/5 = SubResource("TileSetAtlasSource_w50rd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1yag"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x8k1p"]
+
+[node name="officeOutside" type="Node2D"]
+
+[node name="Backdrop" parent="." instance=ExtResource("1_lmx61")]
+position = Vector2(-2, -4)
+scale = Vector2(0.754975, 0.754975)
+frame_progress = 0.56225
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-8, 1)
+scale = Vector2(0.998059, 1)
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_n1byk")
+format = 2
+layer_0/tile_data = PackedInt32Array(196599, 65541, 0, 196600, 5, 0, 196601, 5, 0, 196602, 65541, 1, 196603, 5, 0, 196604, 5, 1, 196605, 5, 0, 196606, 5, 0, 196607, 5, 1, 131072, 5, 0, 131073, 65541, 0, 131074, 5, 0, 131075, 65541, 1, 131076, 5, 0, 131077, 5, 0, 131078, 5, 1, 131079, 5, 0, 131080, 5, 0, 196598, 5, 0, 131062, 262149, 3, 65526, 393221, 3, -65546, 262149, 3, -196618, 262149, 3, -131082, 262149, 2, -10, 393221, 2, 131070, 524293, 3, 131071, 589829, 3, 65534, 524293, 2, 65535, 589829, 2, -4, 393221, 2, -3, 458757, 2, 65532, 393221, 3, 65533, 458757, 3, 131069, 327685, 2, 131068, 262149, 2, 65536, 262149, 2, 65537, 327685, 2, 1, 327685, 3, 0, 262149, 3, -65536, 262149, 2, -65535, 327685, 2, -131072, 393221, 3, -131071, 458757, 3, -131076, 262149, 2, -65540, 262149, 3, -131075, 327685, 2, -65539, 327685, 3, -262144, 262149, 3, -196608, 393221, 2, -262143, 327685, 3, -196607, 458757, 2, -196612, 393221, 3, -196611, 458757, 3, -2, 262149, 2, -1, 327685, 2, -131074, 262149, 2, -65538, 262149, 3, -131073, 327685, 2, -65537, 327685, 3, -262146, 262149, 2, -196610, 262149, 3, -262145, 327685, 2, -196609, 327685, 3, 65543, 262149, 3, 7, 262149, 2, -131065, 393221, 2, -65529, 393221, 3, -262137, 262149, 2, -196601, 262149, 3, 262134, 131077, 0, 327670, 131077, 1, 262135, 196613, 0, 327671, 196613, 1, 262136, 131077, 0, 327672, 131077, 1, 262137, 196613, 0, 327673, 196613, 1, 262138, 131077, 0, 327674, 131077, 1, 262139, 196613, 0, 327675, 196613, 1, 262140, 131077, 0, 327676, 131077, 1, 262141, 196613, 0, 327677, 196613, 1, 262142, 131077, 0, 327678, 131077, 1, 262143, 196613, 0, 327679, 196613, 1, 196608, 131077, 0, 262144, 131077, 1, 196609, 196613, 0, 262145, 196613, 1, 196610, 131077, 0, 262146, 131077, 1, 196611, 196613, 0, 262147, 196613, 1, 196612, 131077, 0, 262148, 131077, 1, 196613, 196613, 0, 262149, 196613, 1, 196614, 131077, 0, 262150, 131077, 1, 196615, 131077, 0, 262151, 131077, 1, 196616, 196613, 0, 262152, 196613, 1, 393205, 5, 1, 393206, 65541, 1, 393207, 5, 1, 393208, 65541, 1, 393209, 5, 1, 393210, 65541, 1, 393211, 5, 1, 393212, 65541, 1, 393213, 5, 1, 393214, 65541, 1, 393215, 5, 1, 327680, 65541, 1, 327681, 5, 1, 327682, 65541, 1, 327683, 5, 1, 327684, 65541, 1, 327685, 5, 1, 327686, 65541, 1, 327687, 5, 1, 327688, 65541, 1, 327689, 5, 1, 327690, 65541, 1, -262148, 393221, 2, -262147, 458757, 2, -327680, 262149, 2, -327679, 327685, 2, -262154, 262149, 2, -327673, 262149, 2, -131064, 458757, 2, -65528, 458757, 3, 8, 327685, 2, 65544, 327685, 3, -262136, 327685, 2, -196600, 327685, 3, -393208, 327685, 2, -327672, 327685, 3, -9, 458757, 2, 65527, 458757, 3, -131081, 327685, 2, -65545, 327685, 3, -262153, 327685, 2, -196617, 327685, 3, 131063, 327685, 3)
+
+[node name="Player" parent="." instance=ExtResource("3_rmh55")]
+position = Vector2(-117, 21)
+
+[node name="player_detector" type="Area2D" parent="."]
+position = Vector2(-17, 23)
+script = ExtResource("4_lvjm5")
+target_scene = ExtResource("5_gdji3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
+shape = SubResource("RectangleShape2D_f1yag")
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(-7, 39)
+shape = SubResource("WorldBoundaryShape2D_x8k1p")
+
+[node name="sceneFade" parent="." instance=ExtResource("5_e7q1g")]
+offset_left = -206.0
+offset_top = -94.0
+offset_right = 174.0
+offset_bottom = 110.0
+
+[node name="interact_prompt" parent="." instance=ExtResource("7_263jw")]
+position = Vector2(-16, 0)
+scale = Vector2(0.296875, 0.296875)
+autoplay = "default"
+frame_progress = 0.383048
+
+[connection signal="body_entered" from="player_detector" to="Player" method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="player_detector" to="player_detector" method="_on_body_entered"]
+[connection signal="body_exited" from="player_detector" to="player_detector" method="_on_body_exited"]

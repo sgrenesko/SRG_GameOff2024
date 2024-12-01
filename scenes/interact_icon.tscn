@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcc2e7fvmw1vg"]
+
+[ext_resource type="Texture2D" uid="uid://d0nqup5esc441" path="res://assets/interact_button.png" id="1_ynatg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nk6j"]
+atlas = ExtResource("1_ynatg")
+region = Rect2(0, 0, 32, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i2sx"]
+atlas = ExtResource("1_ynatg")
+region = Rect2(33, 0, 32, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cnrd"]
+atlas = ExtResource("1_ynatg")
+region = Rect2(66, 0, 32, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vi3bd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nk6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i2sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cnrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i2sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nk6j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vi3bd")
+frame_progress = 0.132617

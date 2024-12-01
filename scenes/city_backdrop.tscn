@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ii0xvfpi4maf"]
+
+[ext_resource type="Texture2D" uid="uid://cwceagorrkr1u" path="res://assets/city_backdrop1.png" id="1_p67ul"]
+[ext_resource type="Texture2D" uid="uid://dak1f4r5rnx5y" path="res://assets/city_backdrop2.png" id="2_8su4w"]
+[ext_resource type="Texture2D" uid="uid://b0eaxxy6etyyl" path="res://assets/raindrop.png" id="3_8st75"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8ite"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_p67ul")
+}, {
+"duration": 5.0,
+"texture": ExtResource("2_8su4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_g8ite")
+autoplay = "default"
+frame_progress = 0.302294
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(3, -116)
+amount = 20
+lifetime = 1.5
+texture = ExtResource("3_8st75")
+emission_shape = 3
+emission_rect_extents = Vector2(175, 1)
+spread = 8.2
+gravity = Vector2(0, 150)
+color = Color(1, 1, 1, 0.135)
+hue_variation_max = 0.8

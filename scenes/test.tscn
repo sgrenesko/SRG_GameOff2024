@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh700vpmb2xqw"]
+
+[ext_resource type="PackedScene" uid="uid://co7gjchbmgf7r" path="res://scenes/draggable.tscn" id="1_of1el"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1170.0
+offset_bottom = 676.0
+mouse_filter = 2
+color = Color(0.564962, 0.564962, 0.564961, 1)
+
+[node name="Draggable" parent="." instance=ExtResource("1_of1el")]
+position = Vector2(204, 234)
+scale = Vector2(8.47656, 8.47656)
+script = null
+
+[node name="ColorRect" type="ColorRect" parent="Draggable"]
+show_behind_parent = true
+offset_left = -17.224
+offset_top = -16.6341
+offset_right = 16.776
+offset_bottom = 17.3659
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)

@@ -1,0 +1,234 @@
+[gd_scene load_steps=17 format=3 uid="uid://b3iujbi3hd21b"]
+
+[ext_resource type="Script" path="res://scenes/minigames/code_reveal.gd" id="1_rlmjl"]
+[ext_resource type="Texture2D" uid="uid://e2x2ne0o10bg" path="res://assets/code_numbers.png" id="3_lh7si"]
+[ext_resource type="Script" path="res://scenes/num_1.gd" id="4_ew7dd"]
+[ext_resource type="Texture2D" uid="uid://cdj7470lueu1k" path="res://assets/up_button.png" id="5_kl4ua"]
+[ext_resource type="Texture2D" uid="uid://dssft7oeau682" path="res://assets/up_button_press.png" id="6_o04da"]
+[ext_resource type="Texture2D" uid="uid://b68ym01t0hi58" path="res://assets/down_button.png" id="7_c3afq"]
+[ext_resource type="Texture2D" uid="uid://dxdcdvb4ve4nw" path="res://assets/down_button_press.png" id="8_r8ytx"]
+[ext_resource type="Texture2D" uid="uid://v0vj40kd6yx4" path="res://assets/game_title_passwords.png" id="9_iug2w"]
+[ext_resource type="PackedScene" uid="uid://cubccaxcflyps" path="res://scenes/pc_transition.tscn" id="10_5iqbp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvbt0"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_but75"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4rne"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is126"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaqnv"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts70q"]
+atlas = ExtResource("3_lh7si")
+region = Rect2(80, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uea6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_but75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4rne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is126")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaqnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts70q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="codeReveal" type="Node2D"]
+script = ExtResource("1_rlmjl")
+
+[node name="PC_edge" type="ColorRect" parent="."]
+offset_right = 1165.0
+offset_bottom = 659.0
+color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="PC_screen" type="ColorRect" parent="PC_edge"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 41.0
+offset_right = 1121.0
+offset_bottom = 609.0
+color = Color(0, 0, 0, 1)
+
+[node name="num1" type="AnimatedSprite2D" parent="." groups=["number_sprites"]]
+position = Vector2(280, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_ew7dd")
+
+[node name="up" type="TextureButton" parent="num1"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("5_kl4ua")
+texture_pressed = ExtResource("6_o04da")
+
+[node name="down" type="TextureButton" parent="num1"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("7_c3afq")
+texture_pressed = ExtResource("8_r8ytx")
+
+[node name="Highlight" type="ColorRect" parent="num1"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 11.0
+
+[node name="num2" type="AnimatedSprite2D" parent="." groups=["number_sprites"]]
+position = Vector2(430, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_ew7dd")
+
+[node name="up" type="TextureButton" parent="num2"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("5_kl4ua")
+texture_pressed = ExtResource("6_o04da")
+
+[node name="down" type="TextureButton" parent="num2"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("7_c3afq")
+texture_pressed = ExtResource("8_r8ytx")
+
+[node name="Highlight" type="ColorRect" parent="num2"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.16666
+offset_top = -11.1667
+offset_right = 6.83334
+offset_bottom = 10.8333
+
+[node name="num3" type="AnimatedSprite2D" parent="." groups=["number_sprites"]]
+position = Vector2(580, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_ew7dd")
+
+[node name="up" type="TextureButton" parent="num3"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("5_kl4ua")
+texture_pressed = ExtResource("6_o04da")
+
+[node name="down" type="TextureButton" parent="num3"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("7_c3afq")
+texture_pressed = ExtResource("8_r8ytx")
+
+[node name="Highlight" type="ColorRect" parent="num3"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 11.0
+
+[node name="num4" type="AnimatedSprite2D" parent="." groups=["number_sprites"]]
+position = Vector2(730, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_ew7dd")
+
+[node name="up" type="TextureButton" parent="num4"]
+offset_left = -8.311
+offset_top = -19.391
+offset_right = 7.689
+offset_bottom = -11.391
+texture_normal = ExtResource("5_kl4ua")
+texture_pressed = ExtResource("6_o04da")
+
+[node name="down" type="TextureButton" parent="num4"]
+offset_left = -7.564
+offset_top = 11.34
+offset_right = 8.436
+offset_bottom = 19.34
+texture_normal = ExtResource("7_c3afq")
+texture_pressed = ExtResource("8_r8ytx")
+
+[node name="Highlight" type="ColorRect" parent="num4"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.16666
+offset_top = -11.0
+offset_right = 6.83334
+offset_bottom = 11.0
+
+[node name="num5" type="AnimatedSprite2D" parent="." groups=["number_sprites"]]
+position = Vector2(880, 424)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uea6y")
+script = ExtResource("4_ew7dd")
+
+[node name="up" type="TextureButton" parent="num5"]
+offset_left = -8.31129
+offset_top = -19.3911
+offset_right = 7.68871
+offset_bottom = -11.3911
+texture_normal = ExtResource("5_kl4ua")
+texture_pressed = ExtResource("6_o04da")
+
+[node name="down" type="TextureButton" parent="num5"]
+offset_left = -7.5642
+offset_top = 11.3398
+offset_right = 8.4358
+offset_bottom = 19.3398
+texture_normal = ExtResource("7_c3afq")
+texture_pressed = ExtResource("8_r8ytx")
+
+[node name="Highlight" type="ColorRect" parent="num5"]
+visible = false
+modulate = Color(1, 1, 1, 0.368)
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 11.0
+
+[node name="codeTitle" type="Sprite2D" parent="."]
+position = Vector2(580, 185)
+texture = ExtResource("9_iug2w")
+
+[node name="pc_transition" parent="." instance=ExtResource("10_5iqbp")]
+position = Vector2(3, -1)
